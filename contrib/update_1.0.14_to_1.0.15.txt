@@ -1,0 +1,14 @@
+#
+# Update 1.0.14 to 1.0.15
+# 
+#-----[ COPY ]-------------------------------------------------------
+# 
+
+root/includes/hooks/hook_syntax_highlighter.php				to	includes/hooks/hook_syntax_highlighter.php
+root/classes/scripts/select_expand_bbcodes.js				to	classes/scripts/select_expand_bbcodes.js
+
+# Note: DO NOT FORGET TO CLEAR CACHE AND REFRESH THEME AND TEMPLATE DATA
+# 
+#-----[ SAVE/CLOSE ALL FILES ]--------------------------------------- 
+# 
+# EoM

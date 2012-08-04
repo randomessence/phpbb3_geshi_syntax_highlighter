@@ -1,0 +1,742 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="modx.prosilver.en.xsl"?>
+<!--NOTICE: Please open this file in your web browser. If presented with a security warning, you may safely tell it to allow the blocked content.-->
+<!--For security purposes, please check: http://www.phpbb.com/mods/ for the latest version of this MOD.\nAlthough MODs are checked before being allowed in the MODs Database there is no guarantee that there are no security problems within the MOD.\nNo support will be given for MODs not found within the MODs Database which can be found at http://www.phpbb.com/mods/-->
+<mod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phpbb.com/mods/xml/modx-1.2.5.xsd">
+	<header>
+		<meta name="generator" content="MODX file generated with PP MODX Creator by tumba25 (online version)"/>
+		<license><![CDATA[http://opensource.org/licenses/gpl-license.php GNU General Public License v2]]></license>
+		<title lang="en"><![CDATA[A Geshi Syntax Highlighter]]></title>
+		<description lang="en"><![CDATA[Adds a BBCode 'syntax' which allows you to post programs/scripts in up to 202 languages and have the post Syntax Highlighted using GeSHi.]]></description>
+		<author-notes lang="en"><![CDATA[The added BBCode will not be shown on the posting page as this mod is hooked into phpBB (and as such this mod processes the message text AFTER phpBB has parsed all the BBCodes it knows how to deal with), however, you can alter the 'Custom BBCodes Page' mod by stokerpiller to show how to use the syntax tag. Check the 'contrib/boardbbcodes_changes.txt' file for details on the changes.
+		
+		If you wish to use the scripting/programming langauge as a BBCode tag then see the file: contrib/lang_as_bbcode_tag.txt for information on what to change to enable the feature.
+		
+		Thanks are due to:
+		CyberAlien - for releasing the original BBCode parser to the public.
+		baboon - for (at time of posting this) a part complete Spanish translation
+		mrbaseball34 - for the idea to use the language as a BBCode tag
+		Bigwebmaster - for pointing out some errors I'd missed... and the fact that 'debug mode' is there for a reason.]]></author-notes>
+		<author-group>
+			<author>
+				<username><![CDATA[UseLess]]></username>
+				<homepage><![CDATA[http://www.phpbbstyles.co.uk]]></homepage>
+			</author>
+			<author>
+				<realname><![CDATA[Vjacheslav Trushkin]]></realname>
+				<username><![CDATA[CyberAlien]]></username>
+				<homepage><![CDATA[http://www.stsoftware.biz]]></homepage>
+			</author>
+			<author>
+				<username><![CDATA[Randomessence]]></username>
+			</author>
+		</author-group>
+		<mod-version>1.0.15.1.45b</mod-version>
+		<installation>
+			<level>easy</level>
+			<time>600</time>
+			<target-version>3.0.10</target-version>
+		</installation>
+		<history>
+			<entry>
+				<date>2009-04-22</date>
+				<rev-version>0.0.2</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[test release]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-04-23</date>
+				<rev-version>0.0.3</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[Updated GeSHi to version 1.0.8.3]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-04-24</date>
+				<rev-version>1.0.4</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[changed version number and state from DEV to RC]]></change>
+					<change><![CDATA[fixed bug in bbc_download.php]]></change>
+					<change><![CDATA[altered CSS]]></change>
+					<change><![CDATA[Removed static text and added them to 'language/en/common.php']]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-04-26</date>
+				<rev-version>1.0.5</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[Changed CSS Class name from 'code ...' to 'syntax ...']]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-04-28</date>
+				<rev-version>1.0.6</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[now works in PM, PM Preview, PM History, Message Review, Message Preview]]></change>
+					<change><![CDATA[altered bbc_download.php to use requeat_var and now can download code from PM]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-05-23</date>
+				<rev-version>1.0.7</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[altered DIY Instructions to also include info about refreshing Theme data]]></change>
+					<change><![CDATA[moved some hard coded language stuff into language files]]></change>
+					<change><![CDATA[removed use of $GLOBAL array]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-06-01</date>
+				<rev-version>1.0.8</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[updated GeSHi to version 1.0.8.4]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-06-21</date>
+				<rev-version>1.0.9</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[minor issues fixed as pointed out by the phpBB.com MOD Team]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-06-25</date>
+				<rev-version>1.0.10</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[version not released]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-07-02</date>
+				<rev-version>1.0.11</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[if the basic tag is used, i.e. [syntax] then the mod will add line numbers, as it previously did]]></change>
+					<change><![CDATA[changed 'syntax=' to 'lang=']]></change>
+					<change><![CDATA[if either [syntax=lang name] or [syntax lang=lang name] is used then, by default, no line numbers will be shown]]></change>
+					<change><![CDATA[added the ability to use [language name], i.e. [ asp ] .. [ /asp ] for an ASP code listing]]></change>
+					<change><![CDATA[added lines option can be either 'lines=geshi-n' for normal geshi generated line numbers or 'lines=geshi-f' for fancy lines also generated by geshi]]></change>
+					<change><![CDATA[added fancy option which is only used with the 'geshi-f', as detailed above, to specify which lines should be fancy, i.e. if 5 is specified then every 5th line will be fancy, the default is 5 if no value is specified]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-07-09</date>
+				<rev-version>1.0.12</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[Now works in MCP when viewing reported posts preview]]></change>
+					<change><![CDATA[Fixed other issues when DEBUG mode was enabled]]></change>
+					<change><![CDATA[added method to remove the link stuff added by phpBB]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-08-04</date>
+				<rev-version>1.0.13</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[Redone the way a function works... the mod now works where it used to before I broke it]]></change>
+					<change><![CDATA[Moved xs_bbcode_fn.js to classes/scripts as it's a common file]]></change>
+					<change><![CDATA[Removed ./ as root path prefix and replaced with {ROOT_PATH}]]></change>
+					<change><![CDATA[Added SubSilver 2 support]]></change>
+					<change><![CDATA[Altered some code that should have stopped the mod being validated.]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-08-10</date>
+				<rev-version>1.0.14</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[Lots of other fixes I don't remember after all when you're without a PC for a while it's easy to forget what changes you've made...]]></change>
+					<change><![CDATA[Stopped the syntax tag being parsed if BBCode tags are malformed (in the wrong order)]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2011-03-26</date>
+				<rev-version>1.0.15</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[Bug fix release]]></change>
+					<change><![CDATA[updated GeSHi to version 1.0.8.10]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2012-08-03</date>
+				<rev-version>1.15.1.45b</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[added a bbcode drop down menu with a full list of languages to select from]]></change>
+				</changelog>
+			</entry>
+		</history>
+		<link-group>
+			<link type="template" href="subsilver2.xml" lang="en">subsilver2</link>
+		</link-group>
+	</header>
+	<action-group>
+		<copy>
+			<file from="root/*.*" to="*.*"/>
+			<file from="root/styles/prosilver/*.*" to="styles/prosilver/*.*"/>
+		</copy>
+		<open src="includes/bbcode.php">
+			<edit>
+				<comment lang="en"/>
+				<find><![CDATA[			$bbcode_hardtpl = array(
+				'b_open'	=> '<span style="font-weight: bold">',
+				'b_close'	=> '</span>',
+				'i_open'	=> '<span style="font-style: italic">',
+				'i_close'	=> '</span>',
+				'u_open'	=> '<span style="text-decoration: underline">',
+				'u_close'	=> '</span>',
+				'img'		=> '<img src="$1" alt="' . $user->lang['IMAGE'] . '" />',
+				'size'		=> '<span style="font-size: $1%; line-height: normal">$2</span>',
+				'color'		=> '<span style="color: $1">$2</span>',
+				'email'		=> '<a href="mailto:$1">$2</a>'
+			);
+]]></find>
+				<action type="replace-with"><![CDATA[			$bbcode_hardtpl = array(
+				'b_open'	=> '<span style="font-weight: bold">',
+				'b_close'	=> '</span><!-- b end -->',
+				'i_open'	=> '<span style="font-style: italic">',
+				'i_close'	=> '</span><!-- i end -->',
+				'u_open'	=> '<span style="text-decoration: underline">',
+				'u_close'	=> '</span><!-- u end -->',
+				'img'		=> '<img src="$1" alt="' . $user->lang['IMAGE'] . '" />',
+				'size'		=> '<span style="font-size: $1%; line-height: normal">$2</span><!-- size end -->',
+				'color'		=> '<span style="color: $1">$2</span><!-- colour end -->',
+				'email'		=> '<a href="mailto:$1">$2</a>'
+			);
+]]></action>
+			</edit>
+		</open>
+		<open src="language/en/common.php">
+			<edit>
+				<comment lang="en"><![CDATA[End of the file.]]></comment>
+				<find><![CDATA[?>]]></find>
+				<action type="before-add"><![CDATA[// XS Syntax Highlighter
+$lang = array_merge($lang, array(
+	'XS_SH_INFO_VERSION'	=> 'Syntax Highlighter based on the XS BBCode parser.',
+	
+	'XS_SH_NOTE'			=> 'Note',
+	'XS_SH_TAG_ONCE'		=> 'You may only use this BBCode Tag once in a signature.',
+	'XS_SH_TAG_SIG'			=> 'This tag can only be used in signatures.',
+	'XS_SH_TAG_NOSIG'		=> 'This tag cannot be used in signatures.',
+	
+	'XS_SH_NO_TOPIC_ID'	=> 'No topic id supplied.',
+	'XS_SH_NO_TOPIC'		=> 'The requested topic id does not exist.',
+	'XS_SH_NO_CONTENT'	=> 'The requested topic id does not contain anything to download.',
+
+	// debug
+	'XS_BBC_DEBUG_DEBUG'		=> 'Debug',
+
+	// Help lines - used if using the boardbbcodes mod
+	'XS_SH_TAG_VERSION'	=> 'Displays BBCode (Hooker) Version information: [version][/version] or [version /]',
+	'XS_SH_TAG_SYNTAX'	=> '<b>Syntax Highlighting</b>: [syntax="php"] code in here [/syntax] or [syntax lang="php" filename="file.php" start="10"] code in here [/syntax]',
+));]]></action>
+			</edit>
+		</open>
+		<open src="language/en/posting.php">
+			<edit>
+				<find><![CDATA[	'MORE_SMILIES'				=> 'View more smilies',]]></find>
+				<action type="after-add"><![CDATA[/** Begin geshi */
+           'GESHI'         => 'Geshi Syntax',
+           'BBCODE41_4CS'      => '4cs',
+           'BBCODE41_6502ACME'   => '6502acme',
+		   'BBCODE41_6502KICKASS'   => '6502kickass',
+		   'BBCODE41_6502TASM'   => '6502tasm',
+		   'BBCODE41_68000DEVPAC'   => '68000devpac',
+		   'BBCODE41_ABAP'   => 'abap',
+		   'BBCODE41_ACTIONSCRIPT'   => 'actionscript',
+		   'BBCODE41_ACTIONSCRIPT3'   => 'actionscript3',
+		   'BBCODE41_ADA'   => 'ada',
+		   'BBCODE41_ALGO168'   => 'algol68',
+		   'BBCODE41_APACHE'   => 'apache',
+		   'BBCODE41_APPLESCRIPT'   => 'applescript',
+		   'BBCODE41_APTSOURCES'   => 'apt_sources',
+		   'BBCODE41_ASM'   => 'asm',
+		   'BBCODE41_ASP'   => 'asp',
+		   'BBCODE41_AUTOCONF'   => 'autoconf',
+		   'BBCODE41_AUTOHOTKEY'   => 'autohotkey',
+		   'BBCODE41_AUTOIT'   => 'autoit',
+		   'BBCODE41_AVISYNTH'   => 'avisynth',
+		   'BBCODE41_AWK'   => 'awk',
+		   'BBCODE41_BASECOMAVR'   => 'bascomavr',
+		   'BBCODE41_BASH'   => 'bash',
+		   'BBCODE41_BASIC4GL'   => 'basic4gl',
+		   'BBCODE41_BF'   => 'bf',
+		   'BBCODE41_BIBTEX'   => 'bibtex',
+		   'BBCODE41_BLITZBASIC'   => 'blitzbasic',
+		   'BBCODE41_BNF'   => 'bnf',
+		   'BBCODE41_BOO'   => 'boo',
+		   'BBCODE41_C'   => 'c',
+		   'BBCODE41_CLOADRUNNER'   => 'c_loadrunner',
+		   'BBCODE41_CMAC'   => 'c_mac',
+		   'BBCODE41_CADDCL'   => 'caddcl',
+		   'BBCODE41_CADLISP'   => 'cadlisp',
+		   'BBCODE41_CFDG'   => 'cfdg',
+		   'BBCODE41_CFM'   => 'cfm',
+		   'BBCODE41_CHAISCRIPT'   => 'chaiscript',
+		   'BBCODE41_CIL'   => 'cil',
+		   'BBCODE41_CLOJURE'   => 'clojure',
+		   'BBCODE41_CMAKE'   => 'cmake',
+		   'BBCODE41_COBOL'   => 'cobol',
+		   'BBCODE41_COFFEESCRIPT'   => 'coffeescript',
+		   'BBCODE41_CPP'   => 'cpp',
+		   'BBCODE41_CPPQT'   => 'cpp-qt',
+		   'BBCODE41_CSHARP'   => 'csharp',
+		   'BBCODE41_CSS'   => 'css',
+		   'BBCODE41_CUESHEET'   => 'cuesheet',
+		   'BBCODE41_D'   => 'd',
+		   'BBCODE41_DCS'   => 'dcs',
+		   'BBCODE41_DELPHI'   => 'delphi',
+		   'BBCODE41_DIFF'   => 'diff',
+		   'BBCODE41_DIV'   => 'div',
+		   'BBCODE41_DOS'   => 'dos',
+		   'BBCODE41_DOT'   => 'dot',
+		   'BBCODE41_E'   => 'e',
+		   'BBCODE41_ECMASCRIPT'   => 'ecmascript',
+		   'BBCODE41_EIFFEL'   => 'eiffel',
+		   'BBCODE41_EMAIL'   => 'email',
+		   'BBCODE41_EPC'   => 'epc',
+		   'BBCODE41_ERLANG'   => 'erlang',
+		   'BBCODE41_EUPHORIA'   => 'euphoria',
+		   'BBCODE41_F1'   => 'f1',
+		   'BBCODE41_FALCON'   => 'falcon',
+		   'BBCODE41_FO'   => 'fo',
+		   'BBCODE41_FORTRAN'   => 'fortran',
+		   'BBCODE41_FREEBASIC'   => 'freebasic',
+		   'BBCODE41_FSHARP'   => 'fsharp',
+		   'BBCODE41_GAMBAS'   => 'gambas',
+		   'BBCODE41_GDB'   => 'gdb',
+		   'BBCODE41_GENERO'   => 'genero',
+		   'BBCODE41_GENIE'   => 'genie',
+		   'BBCODE41_GETTEXT'   => 'gettext',
+		   'BBCODE41_GLSL'   => 'glsl',
+		   'BBCODE41_GML'   => 'gml',
+		   'BBCODE41_GNUPLOT'   => 'gnuplot',
+		   'BBCODE41_GO'   => 'go',
+		   'BBCODE41_GROOVY'   => 'groovy',
+		   'BBCODE41_GWBASIC'   => 'gwbasic',
+		   'BBCODE41_HASKELL'   => 'haskell',
+		   'BBCODE41_HICEST'   => 'hicest',
+		   'BBCODE41_HQ9PLUS'   => 'hq9plus',
+		   'BBCODE41_HTML4STRICT'   => 'html4strict',
+		   'BBCODE41_HTML5'   => 'html5',
+		   'BBCODE41_ICON'   => 'icon',
+		   'BBCODE41_DLL'   => 'idl',
+		   'BBCODE41_INI'   => 'ini',
+		   'BBCODE41_INNO'   => 'inno',          
+		   'BBCODE41_INTERCAL'   => 'intercal',
+		   'BBCODE41_IO'   => 'io',
+		   'BBCODE41_J'   => 'j',
+		   'BBCODE41_JAVA'   => 'java',
+		   'BBCODE41_JAVA5'   => 'java5',
+		   'BBCODE41_JAVASCRIPT'   => 'javascript',
+		   'BBCODE41_JQUERY'   => 'jquery',
+		   'BBCODE41_KIXTART'   => 'kixtart',
+		   'BBCODE41_KLONEC'   => 'klonec',
+		   'BBCODE41_KLONECPP'   => 'klonecpp',
+		   'BBCODE41_LATEX'   => 'latex',
+		   'BBCODE41_LB'   => 'lb',
+		   'BBCODE41_LISP'   => 'lisp',
+		   'BBCODE41_LLVM'   => 'llvm',
+		   'BBCODE41_LOCOBASIC'   => 'locobasic',
+		   'BBCODE41_LOGTALK'   => 'logtalk',
+		   'BBCODE41_LOLCODE'   => 'lolcode',
+		   'BBCODE41_LOTUSFORMULAS'   => 'lotusformulas',
+		   'BBCODE41_LOTUSSCRIPT'   => 'lotusscript',
+		   'BBCODE41_LSCRIPT'   => 'lscript',		   
+		   'BBCODE41_LS12'   => 'lsl2',
+		   'BBCODE41_LUA'   => 'lua',
+		   'BBCODE41_M68K'   => 'm68k',
+		   'BBCODE41_MAGIKSF'   => 'magiksf',
+		   'BBCODE41_MAKE'   => 'make',
+		   'BBCODE41_MAPBASIC'   => 'mapbasic',
+		   'BBCODE41_MATLAB'   => 'matlab',
+		   'BBCODE41_MIRC'   => 'mirc',
+		   'BBCODE41_MMIX'   => 'mmix',
+		   'BBCODE41_MODULA'   => 'modula2',
+		   'BBCODE41_MODULA3'   => 'modula3',
+		   'BBCODE41_MPASM'   => 'mpasm',
+		   'BBCODE41_MXML'   => 'mxml',
+		   'BBCODE41_MYSQL'   => 'mysql',
+		   'BBCODE41_NEWLISP'   => 'newlisp',
+		   'BBCODE41_NSIS'   => 'nsis',
+		   'BBCODE41_OBERON2'   => 'oberon2',
+		   'BBCODE41_OBJC'   => 'objc',
+		   'BBCODE41_OBJECK'   => 'objeck',
+		   'BBCODE41_OCAML'   => 'ocaml',
+		   'BBCODE41_OCAMLBRIEF'   => 'ocaml-brief',
+		   'BBCODE41_OOBAS'   => 'oobas',
+		   'BBCODE41_ORACLE8'   => 'oracle8',
+		   'BBCODE41_ORACLE11'   => 'oracle11',
+		   'BBCODE41_OXYGENE'   => 'oxygene',
+		   'BBCODE41_PASCAL'   => 'pascal',
+		   'BBCODE41_PCRE'   => 'pcre',
+		   'BBCODE41_PER'   => 'per',
+		   'BBCODE41_PERL'   => 'perl',
+		   'BBCODE41_PERL16'   => 'perl6',
+		   'BBCODE41_PF'   => 'pf',
+		   'BBCODE41_PHP'   => 'php',
+		   'BBCODE41_PHPBRIEF'   => 'php-brief',
+		   'BBCODE41_PIC16'   => 'pic16',
+		   'BBCODE41_PIKE'   => 'pike',
+		   'BBCODE41_PIXELBLENDER'   => 'pixelbender',
+		   'BBCODE41_PLI'   => 'pli',
+		   'BBCODE41_PLSQL'   => 'plsql',
+		   'BBCODE41_POSTGRESQL'   => 'postgresql',
+		   'BBCODE41_POVRAY'   => 'povray',		   
+		   'BBCODE41_POWERBUILDER'   => 'powerbuilder',
+		   'BBCODE41_POWERSHELL'   => 'powershell',
+		   'BBCODE41_PROFTPD'   => 'proftpd',		   
+		   'BBCODE41_PROGRESS'   => 'progress',
+		   'BBCODE41_PROLOG'   => 'prolog',
+		   'BBCODE41_PROPERTIES'   => 'properties',		   
+		   'BBCODE41_PROVIDEX'   => 'providex',
+		   'BBCODE41_PUREBASIC'   => 'purebasic',
+		   'BBCODE41_PYCON'   => 'pycon',		   
+		   'BBCODE41_PYTHON'   => 'python',
+		   'BBCODE41_Q'   => 'q',
+		   'BBCODE41_QBASIC'   => 'qbasic',		   
+		   'BBCODE41_RAILS'   => 'rails',
+		   'BBCODE41_REBOL'   => 'rebol',
+		   'BBCODE41_REG'   => 'reg',		   
+		   'BBCODE41_ROBOTS'   => 'robots',
+		   'BBCODE41_RPMSPEC'   => 'rpmspec',
+		   'BBCODE41_RSPLUS'   => 'rsplus',		   
+		   'BBCODE41_RUBY'   => 'ruby',
+		   'BBCODE41_SAS'   => 'sas',
+		   'BBCODE41_SCALA'   => 'scala',		   
+		   'BBCODE41_SCHEME'   => 'scheme',
+		   'BBCODE41_SCILAB'   => 'scilab',
+		   'BBCODE41_SDLBASIC'   => 'sdlbasic',		   
+		   'BBCODE41_SMALLTALK'   => 'smalltalk',
+		   'BBCODE41_SMARTY'   => 'smarty',
+		   'BBCODE41_SQL'   => 'sql',		   
+		   'BBCODE41_SYSTEMVERILOG'   => 'systemverilog',
+		   'BBCODE41_TCL'   => 'tcl',
+		   'BBCODE41_TERATERM'   => 'teraterm',		   
+		   'BBCODE41_TEXT'   => 'text',
+		   'BBCODE41_THINBASIC'   => 'thinbasic',
+		   'BBCODE41_TSQL'   => 'tsql',		   
+		   'BBCODE41_TYPOSCRIPT'   => 'typoscript',
+		   'BBCODE41_UNICORN'   => 'unicon',
+		   'BBCODE41_USCRIPT'   => 'uscript',		   
+		   'BBCODE41_VALA'   => 'vala',
+		   'BBCODE41_VB'   => 'vb',
+		   'BBCODE41_VBNET'   => 'vbnet',	
+		   'BBCODE41_VERILOG'   => 'verilog',
+		   'BBCODE41_VHDL'   => 'vhdl',
+		   'BBCODE41_VIM'   => 'vim',		   
+		   'BBCODE41_VISUALFOXPRO'   => 'visualfoxpro',
+		   'BBCODE41_VISUALPROLOG'   => 'visualprolog',
+		   'BBCODE41_WHITESPACE'   => 'whitespace',		   
+		   'BBCODE41_WHOIS'   => 'whois',
+		   'BBCODE41_WINBATCH'   => 'winbatch',
+		   'BBCODE41_XBASIC'   => 'xbasic',		   
+		   'BBCODE41_XHTML'   => 'xhtml',
+		   'BBCODE41_XML'   => 'xml',
+		   'BBCODE41_XORGCONF'   => 'xorg_conf',		   
+		   'BBCODE41_XPP'   => 'xpp',
+		   'BBCODE41_YAML'   => 'yaml',
+		   'BBCODE41_Z80'   => 'z80',		   
+		   'BBCODE41_ZXBASIC'   => 'zxbasic',
+	   
+/** End geshi */]]></action>
+			</edit>
+		</open>
+		<open src="styles/prosilver/template/bbcode.html">
+			<edit>
+				<comment lang="en"/>
+				<find><![CDATA[<!-- BEGIN ulist_close --></ul>]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<!-- BEGIN ulist_close --></ul>]]></inline-find>
+					<inline-action type="after-add"><![CDATA[<!-- ul end -->]]></inline-action>
+				</inline-edit>
+			</edit>
+			<edit>
+				<comment lang="en"/>
+				<find><![CDATA[<!-- BEGIN olist_close --></ol>]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<!-- BEGIN olist_close --></ol>]]></inline-find>
+					<inline-action type="after-add"><![CDATA[<!-- ol end -->]]></inline-action>
+				</inline-edit>
+			</edit>
+			<edit>
+				<comment lang="en"/>
+				<find><![CDATA[<!-- END quote_close -->]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<!-- END quote_close -->]]></inline-find>
+					<inline-action type="before-add"><![CDATA[<!-- quote end -->]]></inline-action>
+				</inline-edit>
+			</edit>
+			<edit>
+				<comment lang="en"/>
+				<find><![CDATA[<!-- END b_close -->]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<!-- END b_close -->]]></inline-find>
+					<inline-action type="before-add"><![CDATA[<!-- b end -->]]></inline-action>
+				</inline-edit>
+			</edit>
+			<edit>
+				<comment lang="en"/>
+				<find><![CDATA[<!-- END u_close -->]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<!-- END u_close -->]]></inline-find>
+					<inline-action type="before-add"><![CDATA[<!-- u end -->]]></inline-action>
+				</inline-edit>
+			</edit>
+			<edit>
+				<comment lang="en"/>
+				<find><![CDATA[<!-- END i_close -->]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<!-- END i_close -->]]></inline-find>
+					<inline-action type="before-add"><![CDATA[<!-- i end -->]]></inline-action>
+				</inline-edit>
+			</edit>
+			<edit>
+				<comment lang="en"/>
+				<find><![CDATA[<!-- END color -->]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<!-- END color -->]]></inline-find>
+					<inline-action type="before-add"><![CDATA[<!-- colour end -->]]></inline-action>
+				</inline-edit>
+			</edit>
+			<edit>
+				<comment lang="en"/>
+				<find><![CDATA[<!-- END size -->]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<!-- END size -->]]></inline-find>
+					<inline-action type="before-add"><![CDATA[<!-- size end -->]]></inline-action>
+				</inline-edit>
+			</edit>
+		</open>
+		<open src="styles/prosilver/template/overall_header.html">
+			<edit>
+				<comment lang="en"/>
+				<find><![CDATA[<script type="text/javascript" src="{T_SUPER_TEMPLATE_PATH}/forum_fn.js"></script>]]></find>
+				<action type="after-add"><![CDATA[<script type="text/javascript" src="{ROOT_PATH}classes/scripts/xs_bbcode_fn.js"></script>
+<script type="text/javascript" src="{ROOT_PATH}classes/scripts/select_expand_bbcodes.js"></script>]]></action>
+			</edit>
+		</open>
+		<open src="styles/prosilver/template/posting_buttons.html">
+			<edit>
+				<find><![CDATA[	<!-- IF S_BBCODE_FLASH -->
+		<input type="button" class="button2" accesskey="d" name="addbbcode18" value="Flash" onclick="bbstyle(18)" title="{L_BBCODE_D_HELP}" />
+	<!-- ENDIF -->]]></find>
+				<action type="after-add"><![CDATA[<select name="addbbcode41" onchange="bbfontstyle('[syntax=' + this.form.addbbcode41.options[this.form.addbbcode41.selectedIndex].value + ']', '[/syntax]');this.form.addbbcode41.selectedIndex = 0;" title="{L_GESHI}">
+
+<option value="0" selected="selected" style="display: none">{L_GESHI}</option>
+				<option value="{L_BBCODE41_4CS}">4CS</option>
+				<option value="{L_BBCODE41_6502ACME}">6502 ACME</option>
+				<option value="{L_BBCODE41_6502KICKASS}">6502 Kick Ass</option>
+				<option value="{L_BBCODE41_6502TASM}">6502 TASM</option>
+				<option value="{L_BBCODE41_68000DEVPAC}">68000 Devpac</option>
+				<option value="{L_BBCODE41_ABAP}">ABAP</option>
+				<option value="{L_BBCODE41_ACTIONSCRIPT}">ActionScript</option>
+				<option value="{L_BBCODE41_ACTIONSCRIPT3}">ActionScript 3</option>
+				<option value="{L_BBCODE41_ADA}">ADA</option>
+				<option value="{L_BBCODE41_ALGO168}">Algo 168</option>
+				<option value="{L_BBCODE41_APACHE}">Apache</option>
+				<option value="{L_BBCODE41_APPLESCRIPT}">AppleScript</option>
+				<option value="{L_BBCODE41_APTSOURCES}">Apt Sources</option>
+				<option value="{L_BBCODE41_ASM}">ASM</option>
+				<option value="{L_BBCODE41_ASP}">ASP</option>
+				<option value="{L_BBCODE41_AUTOCONF}">AutoconF</option>
+				<option value="{L_BBCODE41_AUTOHOTKEY}">AutoHotKey</option>
+				<option value="{L_BBCODE41_AUTOIT}">Auto IT</option>
+				<option value="{L_BBCODE41_AVISYNTH}">AviSynth</option>
+				<option value="{L_BBCODE41_AWK}">AWK</option>
+				<option value="{L_BBCODE41_BASECOMAVR}">Base Comavr</option>
+				<option value="{L_BBCODE41_BASH}">Bash</option>
+				<option value="{L_BBCODE41_BASIC4GL}">Basic 4GL</option>
+				<option value="{L_BBCODE41_BF}">BF</option>
+				<option value="{L_BBCODE41_BIBTEX}">Bibtex</option>
+				<option value="{L_BBCODE41_BLITZBASIC}">Blitz Basic</option>
+				<option value="{L_BBCODE41_BNF}">BNF</option>
+				<option value="{L_BBCODE41_BOO}">BOO</option>
+				<option value="{L_BBCODE41_C}">C</option>
+				<option value="{L_BBCODE41_CLOADRUNNER}">C Load Runner</option>
+				<option value="{L_BBCODE41_CMAC}">Cmac</option>
+				<option value="{L_BBCODE41_CADDCL}">CAD Dcl</option>
+				<option value="{L_BBCODE41_CADLISP}">CAD Lisp</option>
+				<option value="{L_BBCODE41_CFDG}">CFDG</option>
+				<option value="{L_BBCODE41_CFM}">CFM</option>
+				<option value="{L_BBCODE41_CHAISCRIPT}">ChaiScript</option>
+				<option value="{L_BBCODE41_CIL}">CIL</option>
+				<option value="{L_BBCODE41_CLOJURE}">Clojure</option>
+				<option value="{L_BBCODE41_CMAKE}">Cmake</option>
+				<option value="{L_BBCODE41_COBOL}">Cobol</option>
+				<option value="{L_BBCODE41_COFFEESCRIPT}">CoffeeScript</option>
+				<option value="{L_BBCODE41_CPP}">CPP</option>
+				<option value="{L_BBCODE41_CPPQT}">Cppqt</option>
+				<option value="{L_BBCODE41_CSHARP}">C Sharp</option>
+				<option value="{L_BBCODE41_CSS}">CSS</option>
+				<option value="{L_BBCODE41_CUESHEET}">CueSheet</option>
+				<option value="{L_BBCODE41_D}">D</option>
+				<option value="{L_BBCODE41_DCS}">DCSs</option>
+				<option value="{L_BBCODE41_DELPHI}">Delphi</option>
+				<option value="{L_BBCODE41_DIFF}">Diff</option>
+				<option value="{L_BBCODE41_DIV}">DIV</option>
+				<option value="{L_BBCODE41_DOS}">DOS</option>				
+				<option value="{L_BBCODE41_DOT}">DOT</option>
+				<option value="{L_BBCODE41_E}">E</option>
+				<option value="{L_BBCODE41_ECMASCRIPT}">EmaScript</option>
+				<option value="{L_BBCODE41_EIFFEL}">Eiffel</option>
+				<option value="{L_BBCODE41_EMAIL}">Email</option>
+				<option value="{L_BBCODE41_EPC}">EPC</option>
+				<option value="{L_BBCODE41_ERLANG}">Erlang</option>
+				<option value="{L_BBCODE41_EUPHORIA}">Euphoria</option>
+				<option value="{L_BBCODE41_F1}">F1</option>
+				<option value="{L_BBCODE41_FALCON}">Falcon</option>
+				<option value="{L_BBCODE41_FO}">FO</option>
+				<option value="{L_BBCODE41_FORTRAN}">Fortan</option>
+				<option value="{L_BBCODE41_FREEBASIC}">Free Basic</option>
+				<option value="{L_BBCODE41_FSHARP}">F Sharp</option>
+				<option value="{L_BBCODE41_GAMBAS}">Gambas</option>
+				<option value="{L_BBCODE41_GDB}">GDB</option>
+				<option value="{L_BBCODE41_GENERO}">Genero</option>
+				<option value="{L_BBCODE41_GENIE}">Genie</option>
+				<option value="{L_BBCODE41_GETTEXT}">GetText</option>
+				<option value="{L_BBCODE41_GLSL}">GLSL</option>
+				<option value="{L_BBCODE41_GML}">GML</option>
+				<option value="{L_BBCODE41_GNUPLOT}">GNUPlot</option>
+				<option value="{L_BBCODE41_GO}">GO</option>
+				<option value="{L_BBCODE41_GROOVY}">Groovy</option>
+				<option value="{L_BBCODE41_GWBASIC}">GWBasic</option>
+				<option value="{L_BBCODE41_HASKELL}">HasKell</option>
+				<option value="{L_BBCODE41_HICEST}">HICEST</option>
+				<option value="{L_BBCODE41_HQ9PLUS}">HQ9Plus</option>
+				<option value="{L_BBCODE41_HTML4STRICT}">HTML 4 Strict</option>
+				<option value="{L_BBCODE41_HTML5}">HTML 5</option>
+				<option value="{L_BBCODE41_ICON}">Icon</option>
+				<option value="{L_BBCODE41_DLL}">DLL</option>
+				<option value="{L_BBCODE41_INI}">INI</option>
+				<option value="{L_BBCODE41_INNO}">INNO</option>
+				<option value="{L_BBCODE41_INTERCAL}">Intercal</option>
+				<option value="{L_BBCODE41_IO}">IO</option>
+				<option value="{L_BBCODE41_J}">J</option>
+				<option value="{L_BBCODE41_JAVA}">Java</option>
+				<option value="{L_BBCODE41_JAVA5}">Java 5</option>
+				<option value="{L_BBCODE41_JAVASCRIPT}">JavaScript</option>
+				<option value="{L_BBCODE41_JQUERY}">jQuery</option>
+				<option value="{L_BBCODE41_KIXTART}">KixTart</option>
+				<option value="{L_BBCODE41_KLONEC}">KloneC</option>
+				<option value="{L_BBCODE41_KLONECPP}">KloneCPP</option>
+				<option value="{L_BBCODE41_LATEX}">LaTeX</option>
+				<option value="{L_BBCODE41_LB}">LB</option>
+				<option value="{L_BBCODE41_LISP}">Lisp</option>
+				<option value="{L_BBCODE41_LLVM}">LLVM</option>
+				<option value="{L_BBCODE41_LOCOBASIC}">LocoBasic</option>
+				<option value="{L_BBCODE41_LOGTALK}">LOGTalk</option>
+				<option value="{L_BBCODE41_LOLCODE}">LOLCode</option>
+				<option value="{L_BBCODE41_LOTUSFORMULAS}">LotusFormulas</option>
+				<option value="{L_BBCODE41_LOTUSSCRIPT}">LotusScript</option>
+				<option value="{L_BBCODE41_LSCRIPT}">LScript</option>
+				<option value="{L_BBCODE41_LS12}">LS12</option>
+				<option value="{L_BBCODE41_LUA}">LUA</option>
+				<option value="{L_BBCODE41_M68K}">M68K</option>
+				<option value="{L_BBCODE41_MAGIKSF}">MagikSF</option>
+				<option value="{L_BBCODE41_MAKE}">MAKE</option>
+				<option value="{L_BBCODE41_MAPBASIC}">MapBasic</option>
+				<option value="{L_BBCODE41_MATLAB}">MATLAB</option>
+				<option value="{L_BBCODE41_MIRC}">MIRC</option>
+				<option value="{L_BBCODE41_MMIX}">MMIX</option>
+				<option value="{L_BBCODE41_MODULA}">Modula</option>
+				<option value="{L_BBCODE41_MODULA3}">Modula 3</option>
+				<option value="{L_BBCODE41_MPASM}">Mpasm</option>
+				<option value="{L_BBCODE41_MXML}">MXML</option>
+				<option value="{L_BBCODE41_MYSQL}">MySql</option>
+				<option value="{L_BBCODE41_NEWLISP}">NewLisp</option>
+				<option value="{L_BBCODE41_NSIS}">NSIS</option>
+				<option value="{L_BBCODE41_OBERON2}">Oberon 2</option>
+				<option value="{L_BBCODE41_OBJC}">ObjC</option>
+				<option value="{L_BBCODE41_OBJECK}">Objeck</option>
+				<option value="{L_BBCODE41_OCAML}">Ocaml</option>
+				<option value="{L_BBCODE41_OCAMLBRIEF}">Ocaml Brief</option>
+				<option value="{L_BBCODE41_OOBAS}">Oobas</option>
+				<option value="{L_BBCODE41_ORACLE8}">Oracle 8</option>
+				<option value="{L_BBCODE41_ORACLE11}">Oracle 11</option>
+				<option value="{L_BBCODE41_OXYGENE}">Oxygene</option>
+				<option value="{L_BBCODE41_PASCAL}">Pascal</option>
+				<option value="{L_BBCODE41_PCRE}">Pcre</option>
+				<option value="{L_BBCODE41_PER}">Per</option>
+				<option value="{L_BBCODE41_PERL}">Perl</option>
+				<option value="{L_BBCODE41_PERL16}">Perl 16</option>
+				<option value="{L_BBCODE41_PF}">PF</option>
+				<option value="{L_BBCODE41_PHP}">PHP</option>
+				<option value="{L_BBCODE41_PHPBRIEF}">PHP Brief</option>
+				<option value="{L_BBCODE41_PIC16}">Pic 16</option>
+				<option value="{L_BBCODE41_PIKE}">Pike</option>
+				<option value="{L_BBCODE41_PIXELBLENDER}">Pixel Blender</option>
+				<option value="{L_BBCODE41_PLI}">PLI</option>
+				<option value="{L_BBCODE41_PLSQL}">PlSql</option>
+				<option value="{L_BBCODE41_POSTGRESQL}">Post GreSql</option>
+				<option value="{L_BBCODE41_POVRAY}">Povray</option>
+				<option value="{L_BBCODE41_POWERBUILDER}">Powerbuilder</option>
+				<option value="{L_BBCODE41_POWERSHELL}">Powershell</option>
+				<option value="{L_BBCODE41_PROFTPD}">ProFtpd</option>
+				<option value="{L_BBCODE41_PROGRESS}">Progress</option>
+				<option value="{L_BBCODE41_PROLOG}">Prolog</option>
+				<option value="{L_BBCODE41_PROPERTIES}">Properties</option>
+				<option value="{L_BBCODE41_PROVIDEX}">ProVidex</option>
+				<option value="{L_BBCODE41_PUREBASIC}">PureBAsic</option>
+				<option value="{L_BBCODE41_PYCON}">Pycon</option>
+				<option value="{L_BBCODE41_PYTHON}">Python</option>
+				<option value="{L_BBCODE41_Q}">Q</option>
+				<option value="{L_BBCODE41_QBASIC}">Q Basic</option>
+				<option value="{L_BBCODE41_RAILS}">Rails</option>
+				<option value="{L_BBCODE41_REBOL}">Rebol</option>
+				<option value="{L_BBCODE41_REG}">Reg</option>
+				<option value="{L_BBCODE41_ROBOTS}">Robots</option>
+				<option value="{L_BBCODE41_RPMSPEC}">RpmSpec</option>
+				<option value="{L_BBCODE41_RSPLUS}">RS Plus</option>
+				<option value="{L_BBCODE41_RUBY}">Ruby</option>
+				<option value="{L_BBCODE41_SAS}">SAS</option>
+				<option value="{L_BBCODE41_SCALA}">Scala</option>
+				<option value="{L_BBCODE41_SCHEME}">Scheme</option>
+				<option value="{L_BBCODE41_SCILAB}">SciLab</option>
+				<option value="{L_BBCODE41_SDLBASIC}">SDL Basic</option>
+				<option value="{L_BBCODE41_SMALLTALK}">Small Talk</option>
+				<option value="{L_BBCODE41_SMARTY}">Smarty</option>
+				<option value="{L_BBCODE41_SQL}">Sql</option>
+				<option value="{L_BBCODE41_SYSTEMVERILOG}">SystemVerilog</option>
+				<option value="{L_BBCODE41_TCL}">TCL</option>
+				<option value="{L_BBCODE41_TERATERM}">Teraterm</option>
+				<option value="{L_BBCODE41_TEXT}">Text</option>
+				<option value="{L_BBCODE41_THINBASIC}">ThinBasic</option>
+				<option value="{L_BBCODE41_TSQL}">TSQL</option>
+				<option value="{L_BBCODE41_TYPOSCRIPT}">TypoScript</option>
+				<option value="{L_BBCODE41_UNICORN}">Unicorn</option>
+				<option value="{L_BBCODE41_USCRIPT}">UScript</option>
+				<option value="{L_BBCODE41_VALA}">Vala</option>
+				<option value="{L_BBCODE41_VB}">VB</option>
+				<option value="{L_BBCODE41_VBNET}">Vbnet</option>
+				<option value="{L_BBCODE41_VERILOG}">VErilog</option>
+				<option value="{L_BBCODE41_VHDL}">VHDL</option>
+				<option value="{L_BBCODE41_VIM}">VIM</option>
+				<option value="{L_BBCODE41_VISUALFOXPRO}">VisualFoxPRo</option>
+				<option value="{L_BBCODE41_VISUALPROLOG}">VisualProLog</option>
+				<option value="{L_BBCODE41_WHITESPACE}">WhiteSpace</option>
+				<option value="{L_BBCODE41_WHOIS}">Whois</option>
+				<option value="{L_BBCODE41_WINBATCH}">WinBatch</option>
+				<option value="{L_BBCODE41_XBASIC}">Xbasic</option>
+				<option value="{L_BBCODE41_XHTML}">xHTML</option>
+				<option value="{L_BBCODE41_XML}">XML</option>
+				<option value="{L_BBCODE41_XORGCONF}">XorgConf</option>
+				<option value="{L_BBCODE41_XPP}">XPP</option>
+				<option value="{L_BBCODE41_YAML}">YAML</option>
+				<option value="{L_BBCODE41_Z80}">Z80</option>
+				<option value="{L_BBCODE41_ZXBASIC}">ZxBasic</option>	
+            </select>]]></action>
+			</edit>
+		</open>
+		<open src="styles/prosilver/theme/stylesheet.css">
+			<edit>
+				<comment lang="en"/>
+				<find><![CDATA[@import url("colours.css");]]></find>
+				<action type="after-add"><![CDATA[@import url("ul_syntaxhighlighter.css");]]></action>
+			</edit>
+		</open>
+		<diy-instructions lang="en"><![CDATA[Once the updated files are uploaded to the remote server perform the following steps:
+1. Login to ACP and Clear the Cache (button on admin index page)
+2. Refresh the Style Theme data (from Styles Tab)
+3. Refresh the Style Template data (from Styles Tab)
+
+4. go edit a post to see the new bbcode drop down menu. you can select any text, the use the drop down menu to select a language, and it will be properly wrapped.]]></diy-instructions>
+	</action-group>
+</mod>

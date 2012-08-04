@@ -1,0 +1,35 @@
+# 
+#-----[ OPEN ]-------------------------------------------------------
+#
+
+boardbbcodes.php
+
+# 
+#-----[ FIND ]-------------------------------------------------------
+#
+
+$db->sql_freeresult($result);
+
+# 
+#-----[ AFTER, ADD ]-------------------------------------------------
+# 
+
+if( class_exists('SyntaxHighlighter') )
+{
+	$sh_bbcodes = $sh_bbcode->allowed_bbcode;
+	foreach($sh_bbcodes as $key => $value)
+	{
+		$template->assign_block_vars('bbcodes', array(
+			'BBCODE_NAME'		=> $key,
+			'BBCODE_HELPLINE'	=> $user->lang[$value['bbcode_helpline']],
+			'S_BBCODE_DISPLAY'	=> $value['display_on_posting'],
+			'BBCODE_USAGE'	=> $value['bbcode_match'],
+			'BBCODE_TPL'	=> $value['bbcode_tpl'],
+		));
+	}		
+}
+
+# 
+#-----[ SAVE/CLOSE ALL FILES ]--------------------------------------- 
+# 
+# EoM

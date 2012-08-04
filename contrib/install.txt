@@ -1,0 +1,366 @@
+# Mod Install Version 1.0.14 for phpBB 3.0.7
+#
+# Added SubSilver 2 changes
+# 
+#-----[ COPY ]-------------------------------------------------------
+# 
+# Note: Quick way... copy contents of 'root' to the root of your forum
+
+root/classes/index.htm									to	classes/index.htm
+root/classes/scripts/select_expand_bbcodes.js			to	classes/scripts/select_expand_bbcodes.js
+root/classes/scripts/xs_bbcode_fn.js					to	classes/scripts/xs_bbcode_fn.js
+root/classes/scripts/index.htm							to	classes/scripts/index.htm
+
+root/includes/geshi/*.*									to	includes/geshi/*.*
+root/includes/hooks/hook_syntax_highlighter.php			to	includes/hooks/hook_syntax_highlighter.php
+root/includes/geshi.php									to	includes/geshi.php
+
+root/language/en/mods/useless_xs_bbcode.php				to	language/en/mods/useless_xs_bbcode.php
+
+root/styles/prosilver/theme/ul_syntaxhighlighter.css	to	styles/prosilver/theme/ul_syntaxhighlighter.css
+root/styles/subsilver2/theme/ul_syntax_highlighter.css	to	styles/subsilver2/theme/ul_syntax_highlighter.css
+
+root/bbc_download.php									to	bbc_download.php
+
+# 
+#-----[ OPEN ]-------------------------------------------------------
+#
+
+includes/bbcode.php
+
+# 
+#-----[ FIND ]-------------------------------------------------------
+#
+
+			$bbcode_hardtpl = array(
+				'b_open'	=> '<span style="font-weight: bold">',
+				'b_close'	=> '</span>',
+				'i_open'	=> '<span style="font-style: italic">',
+				'i_close'	=> '</span>',
+				'u_open'	=> '<span style="text-decoration: underline">',
+				'u_close'	=> '</span>',
+				'img'		=> '<img src="$1" alt="' . $user->lang['IMAGE'] . '" />',
+				'size'		=> '<span style="font-size: $1%; line-height: normal">$2</span>',
+				'color'		=> '<span style="color: $1">$2</span>',
+				'email'		=> '<a href="mailto:$1">$2</a>'
+			);
+
+# 
+#-----[ REPLACE WITH ]----------------------------------------------- 
+#
+
+			$bbcode_hardtpl = array(
+				'b_open'	=> '<span style="font-weight: bold">',
+				'b_close'	=> '</span><!-- b end -->',
+				'i_open'	=> '<span style="font-style: italic">',
+				'i_close'	=> '</span><!-- i end -->',
+				'u_open'	=> '<span style="text-decoration: underline">',
+				'u_close'	=> '</span><!-- u end -->',
+				'img'		=> '<img src="$1" alt="' . $user->lang['IMAGE'] . '" />',
+				'size'		=> '<span style="font-size: $1%; line-height: normal">$2</span><!-- size end -->',
+				'color'		=> '<span style="color: $1">$2</span><!-- colour end -->',
+				'email'		=> '<a href="mailto:$1">$2</a>'
+			);
+
+# 
+#-----[ OPEN ]-------------------------------------------------------
+#
+
+language/en/common.php
+
+# 
+#-----[ FIND ]-------------------------------------------------------
+#
+# Tip: End of the file
+
+?>
+
+# 
+#-----[ BEFORE, ADD ]-------------------------------------------------
+# 
+
+// XS Syntax Highlighter
+$lang = array_merge($lang, array(
+	'XS_SH_INFO_VERSION'	=> 'Syntax Highlighter based on the XS BBCode parser.',
+	
+	'XS_SH_NOTE'				=> 'Note',
+	'XS_SH_TAG_ONCE'		=> 'You may only use this BBCode Tag once in a signature.',
+	'XS_SH_TAG_SIG'			=> 'This tag can only be used in signatures.',
+	'XS_SH_TAG_NOSIG'		=> 'This tag cannot be used in signatures.',
+	
+	'XS_SH_NO_TOPIC_ID'	=> 'No topic id supplied.',
+	'XS_SH_NO_TOPIC'		=> 'The requested topic id does not exist.',
+	'XS_SH_NO_CONTENT'	=> 'The requested topic id does not contain anything to download.',
+
+	// Help lines - used if using the boardbbcodes mod
+	'XS_SH_TAG_VERSION'	=> 'Displays BBCode (Hooker) Version information: [version][/version] or [version /]',
+	'XS_SH_TAG_SYNTAX'	=> '<b>Syntax Highlighting</b>: [syntax="php"] code in here [/syntax] or [syntax lang="php" filename="file.php" start="10"] code in here [/syntax]',
+));
+
+# 
+#-----[ OPEN ]-------------------------------------------------------
+#
+
+styles/prosilver/template/bbcode.html
+
+# 
+#-----[ FIND ]-------------------------------------------------------
+#
+
+<!-- BEGIN ulist_close --></ul>
+
+# 
+#-----[ IN-LINE AFTER, ADD ]-----------------------------------------
+# 
+
+<!-- ul end -->
+
+# 
+#-----[ FIND ]-------------------------------------------------------
+#
+
+<!-- BEGIN olist_close --></ol>
+
+# 
+#-----[ IN-LINE AFTER, ADD ]-----------------------------------------
+# 
+
+<!-- ol end -->
+
+# 
+#-----[ FIND ]-------------------------------------------------------
+#
+
+<!-- END quote_close -->
+
+# 
+#-----[ IN-LINE BEFORE, ADD ]---------------------------------------- 
+# 
+
+<!-- quote end -->
+
+# 
+#-----[ FIND ]-------------------------------------------------------
+#
+
+<!-- END b_close -->
+
+# 
+#-----[ IN-LINE BEFORE, ADD ]---------------------------------------- 
+# 
+
+<!-- b end -->
+
+# 
+#-----[ FIND ]-------------------------------------------------------
+#
+
+<!-- END u_close -->
+
+# 
+#-----[ IN-LINE BEFORE, ADD ]---------------------------------------- 
+# 
+
+<!-- u end -->
+
+# 
+#-----[ FIND ]-------------------------------------------------------
+#
+
+<!-- END i_close -->
+
+# 
+#-----[ IN-LINE BEFORE, ADD ]---------------------------------------- 
+# 
+
+<!-- i end -->
+
+# 
+#-----[ FIND ]-------------------------------------------------------
+#
+
+<!-- END color -->
+
+# 
+#-----[ IN-LINE BEFORE, ADD ]---------------------------------------- 
+# 
+
+<!-- colour end -->
+
+# 
+#-----[ FIND ]-------------------------------------------------------
+#
+
+<!-- END size -->
+
+# 
+#-----[ IN-LINE BEFORE, ADD ]---------------------------------------- 
+# 
+
+<!-- size end -->
+
+# 
+#-----[ OPEN ]-------------------------------------------------------
+#
+
+styles/prosilver/template/overall_header.html
+
+# 
+#-----[ FIND ]-------------------------------------------------------
+#
+
+<script type="text/javascript" src="{T_TEMPLATE_PATH}/forum_fn.js"></script>
+
+# 
+#-----[ AFTER, ADD ]-------------------------------------------------
+# 
+
+<script type="text/javascript" src="{ROOT_PATH}classes/scripts/xs_bbcode_fn.js"></script>
+<script type="text/javascript" src="{ROOT_PATH}classes/scripts/select_expand_bbcodes.js"></script>
+
+# 
+#-----[ OPEN ]-------------------------------------------------------
+#
+
+styles/prosilver/theme/stylesheet.css
+
+# 
+#-----[ FIND ]-------------------------------------------------------
+#
+
+@import url("colours.css");
+
+# 
+#-----[ AFTER, ADD ]-------------------------------------------------
+# 
+
+@import url("ul_syntaxhighlighter.css");
+
+# SubSilver 2 Changes
+# 
+#-----[ OPEN ]-------------------------------------------------------
+#
+
+styles/subsilver2/template/bbcode.html
+
+# 
+#-----[ FIND ]-------------------------------------------------------
+#
+
+<!-- BEGIN ulist_close --></ul>
+
+# 
+#-----[ IN-LINE AFTER, ADD ]-----------------------------------------
+# 
+
+<!-- ul end -->
+
+# 
+#-----[ FIND ]-------------------------------------------------------
+#
+
+<!-- BEGIN olist_close --></ol>
+
+# 
+#-----[ IN-LINE AFTER, ADD ]-----------------------------------------
+# 
+
+<!-- ol end -->
+
+# 
+#-----[ FIND ]-------------------------------------------------------
+#
+
+<!-- END quote_close -->
+
+# 
+#-----[ BEFORE, ADD ]------------------------------------------------
+#
+
+<!-- quote end -->
+
+# 
+#-----[ FIND ]-------------------------------------------------------
+#
+
+<!-- END b_close -->
+
+# 
+#-----[ BEFORE, ADD ]---------------------------------------- 
+# 
+
+<!-- b end -->
+
+# 
+#-----[ FIND ]-------------------------------------------------------
+#
+
+<!-- END u_close -->
+
+# 
+#-----[ BEFORE, ADD ]---------------------------------------- 
+# 
+
+<!-- u end -->
+
+# 
+#-----[ FIND ]-------------------------------------------------------
+#
+
+<!-- END i_close -->
+
+# 
+#-----[ BEFORE, ADD ]---------------------------------------- 
+# 
+
+<!-- i end -->
+
+# 
+#-----[ FIND ]-------------------------------------------------------
+#
+
+<!-- END color -->
+
+# 
+#-----[ BEFORE, ADD ]---------------------------------------- 
+# 
+
+<!-- colour end -->
+
+# 
+#-----[ FIND ]-------------------------------------------------------
+#
+
+<!-- END size -->
+
+# 
+#-----[ BEFORE, ADD ]---------------------------------------- 
+# 
+
+<!-- size end -->
+
+# 
+#-----[ OPEN ]-------------------------------------------------------
+#
+
+styles/subsilver2/template/overall_header.html
+
+# 
+#-----[ FIND ]-------------------------------------------------------
+#
+
+<link rel="stylesheet" href="{T_STYLESHEET_LINK}" type="text/css" />
+
+# 
+#-----[ AFTER, ADD ]-------------------------------------------------
+# 
+
+<script type="text/javascript" src="{ROOT_PATH}classes/scripts/xs_bbcode_fn.js"></script>
+<script type="text/javascript" src="{ROOT_PATH}classes/scripts/select_expand_bbcodes.js"></script>
+
+<link rel="stylesheet" href="{T_THEME_PATH}/ul_syntax_highlighter.css" type="text/css" />
+
+# 
+#-----[ SAVE/CLOSE ALL FILES ]--------------------------------------- 
+# 
+# EoM

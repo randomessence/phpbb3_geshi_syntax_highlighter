@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml-stylesheet type="text/xsl" href="modx.prosilver.en.xsl"?>
+<!--For security purposes, please check: http://www.phpbb.com/mods/ for the latest version of this MOD. Although MODs are checked before being allowed in the MODs Database there is no guarantee that there are no security problems within the MOD. No support will be given for MODs not found within the MODs Database which can be found at http://www.phpbb.com/mods/-->
+<mod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phpbb.com/mods/xml/modx-1.2.5.xsd">
+	<header>
+		<license>http://opensource.org/licenses/gpl-license.php GNU General Public License v2</license>
+		
+		<title lang="en">Syntax Highlighter</title>
+		
+		<description lang="en">Adds a BBCode 'syntax' which allows you to post programs/scripts in upto 132 languages and have the post Syntax Highlighted using GeSHi.</description>
+		
+		<author-notes lang="en">SubSilver 2 Style edits. See main install file for phpBB core file edits and ProSilver template changes.</author-notes>
+		
+		<author-group>
+			<author>
+				<realname></realname>
+				<username>UseLess</username>
+				<homepage>http://www.phpbbstyles.co.uk</homepage>
+			</author>
+			<author>
+				<realname>Vjacheslav Trushkin</realname>
+				<username>CyberAlien</username>
+				<homepage>http://www.stsoftware.biz</homepage>
+			</author>
+		</author-group>
+		
+		<mod-version>1.0.15</mod-version>
+		
+		<installation>
+			<level>easy</level>
+			<time>600</time>
+			<target-version>3.0.8</target-version>
+		</installation>
+
+		<history>
+			<entry>
+				<date>2011-03-26</date>
+				<rev-version>1.0.15</rev-version>
+				<changelog lang="en">
+					<change>Bug fix release</change>
+					<change>updated GeSHi to version 1.0.8.10</change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-08-10</date>
+				<rev-version>1.0.14</rev-version>
+				<changelog lang="en">
+					<change>Stopped the syntax tag being parsed if BBCode tags are malformed (in the wrong order)</change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2009-08-04</date>
+				<rev-version>1.0.13</rev-version>
+				<changelog lang="en">
+					<change>Sub Silver 2 support added.</change>
+				</changelog>
+			</entry>
+		</history>
+		<link-group>
+			<link type="parent" href="install.xml" lang="en">Main install file</link>
+		</link-group>
+	</header>
+	
+	<action-group>
+
+		<copy>
+			<file from="root/styles/subsilver2/theme/ul_syntax_highlighter.css" to="styles/subsilver2/theme/ul_syntax_highlighter.css" />
+		</copy>
+
+		<open src="styles/subsilver2/template/bbcode.html">
+			<edit>
+				<comment lang="en"></comment>
+				<find><![CDATA[<!-- BEGIN ulist_close --></ul>]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<!-- BEGIN ulist_close --></ul>]]></inline-find>
+					<inline-action type="after-add"><![CDATA[<!-- ul end -->]]></inline-action>
+				</inline-edit>
+			</edit>
+			<edit>
+				<comment lang="en"></comment>
+				<find><![CDATA[<!-- BEGIN olist_close --></ol>]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<!-- BEGIN olist_close --></ol>]]></inline-find>
+					<inline-action type="after-add"><![CDATA[<!-- ol end -->]]></inline-action>
+				</inline-edit>
+			</edit>
+			<edit>
+				<comment lang="en"></comment>
+				<find><![CDATA[<!-- END quote_close -->]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<!-- END quote_close -->]]></inline-find>
+					<inline-action type="before-add"><![CDATA[<!-- quote end -->]]></inline-action>
+				</inline-edit>
+			</edit>
+			<edit>
+				<comment lang="en"></comment>
+				<find><![CDATA[<!-- END b_close -->]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<!-- END b_close -->]]></inline-find>
+					<inline-action type="before-add"><![CDATA[<!-- b end -->]]></inline-action>
+				</inline-edit>
+			</edit>
+			<edit>
+				<comment lang="en"></comment>
+				<find><![CDATA[<!-- END u_close -->]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<!-- END u_close -->]]></inline-find>
+					<inline-action type="before-add"><![CDATA[<!-- u end -->]]></inline-action>
+				</inline-edit>
+			</edit>
+			<edit>
+				<comment lang="en"></comment>
+				<find><![CDATA[<!-- END i_close -->]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<!-- END i_close -->]]></inline-find>
+					<inline-action type="before-add"><![CDATA[<!-- i end -->]]></inline-action>
+				</inline-edit>
+			</edit>
+			<edit>
+				<comment lang="en"></comment>
+				<find><![CDATA[<!-- END color -->]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<!-- END color -->]]></inline-find>
+					<inline-action type="before-add"><![CDATA[<!-- colour end -->]]></inline-action>
+				</inline-edit>
+			</edit>
+			<edit>
+				<comment lang="en"></comment>
+				<find><![CDATA[<!-- END size -->]]></find>
+				<inline-edit>
+					<inline-find><![CDATA[<!-- END size -->]]></inline-find>
+					<inline-action type="before-add"><![CDATA[<!-- size end -->]]></inline-action>
+				</inline-edit>
+			</edit>
+		</open>
+
+		<open src="styles/subsilver2/template/overall_header.html">
+			<edit>
+				<comment lang="en"></comment>
+				<find><![CDATA[<link rel="stylesheet" href="{T_STYLESHEET_LINK}" type="text/css" />]]></find>
+				<action type="after-add"><![CDATA[<script type="text/javascript" src="{ROOT_PATH}classes/scripts/select_expand_bbcodes.js"></script>
+<script type="text/javascript" src="{ROOT_PATH}classes/scripts/xs_bbcode_fn.js"></script>
+<link rel="stylesheet" href="{T_THEME_PATH}/ul_syntax_highlighter.css" type="text/css" />]]>
+</action>
+			</edit>
+		</open>
+
+		<diy-instructions lang="en">Once the updated files are uploaded to the remote server perform the following steps:
+1. Login to ACP and Clear the Cache (button on admin index page)
+2. Refresh the Style Theme data (from Styles Tab)
+3. Refresh the Style Template data (from Styles Tab)</diy-instructions>
+
+	</action-group>
+</mod>

@@ -1,0 +1,58 @@
+#
+# Update 1.0.12 to 1.0.13
+# 
+#-----[ COPY ]-------------------------------------------------------
+# 
+# Note: The xs_bbcode_fn.js file can be removed from the styles/prosilver/template and
+#		the styles/subsilver2/template dirs
+
+root/includes/hooks/hook_syntax_highlighter.php				to	includes/hooks/hook_syntax_highlighter.php
+root/styles/prosilver/theme/ul_syntaxhighlighter.css		to	styles/prosilver/theme/ul_syntaxhighlighter.css
+root/classes/scripts/xs_bbcode_fn.js						to	classes/scripts/xs_bbcode_fn.js
+
+# Note: If using SubSilver 2 then do the following:
+
+root/styles/subsilver2/theme/ul_syntax_highlighter.css		to	styles/subsilver2/theme/ul_syntax_highlighter.css
+
+# 
+#-----[ OPEN ]-------------------------------------------------------
+#
+
+styles/prosilver/template/overall_header.html
+
+# 
+#-----[ FIND ]-------------------------------------------------------
+#
+
+<script type="text/javascript" src="{T_TEMPLATE_PATH}/xs_bbcode_fn.js"></script>
+
+# 
+#-----[ REPLACE WITH ]----------------------------------------------- 
+#
+
+<script type="text/javascript" src="{ROOT_PATH}classes/scripts/xs_bbcode_fn.js"></script>
+
+# SubSilver 2 Changes
+# 
+#-----[ OPEN ]-------------------------------------------------------
+#
+
+styles/subsilver2/template/overall_header.html
+
+# 
+#-----[ FIND ]-------------------------------------------------------
+#
+
+<script type="text/javascript" src="{T_TEMPLATE_PATH}/xs_bbcode_fn.js"></script>
+
+# 
+#-----[ REPLACE WITH ]----------------------------------------------- 
+#
+
+<script type="text/javascript" src="{ROOT_PATH}classes/scripts/xs_bbcode_fn.js"></script>
+
+# Note: DO NOT FORGET TO CLEAR CACHE AND REFRESH THEME AND TEMPLATE DATA
+# 
+#-----[ SAVE/CLOSE ALL FILES ]--------------------------------------- 
+# 
+# EoM

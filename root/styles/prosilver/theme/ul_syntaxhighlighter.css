@@ -1,0 +1,160 @@
+/*
+	ProSilver
+	XS Syntax Highlighter CSS
+*/
+/* Overall Container */
+.content .syntax {
+	color: #444;
+	display: block;
+	margin: 0px;
+	width: auto;
+	border: solid 1px #D0D0D0;
+	background-color: #FFF;
+	font-size: 1.0em;
+	font-family: Courier, 'Courier New', sans-serif;
+	line-height: 1.2em;
+}
+/* Main Header */
+.content .syntax-header {
+	margin: 0;
+	padding: 4px 0px 4px 4px;
+	border-bottom: solid 1px #ccc;
+	font-size: 0.7em;
+	line-height: 1.2em;
+	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	color: #000;
+	text-transform: uppercase;
+}
+.syntax-header a:link,
+.syntax-header a:visited
+{
+	color: #666;
+	text-decoration: none;
+	border-bottom: dotted 1px #666;
+}
+.syntax-header a:hover,
+.syntax-header a:active
+{
+	color: #FF1010;
+	text-decoration: none;
+	border-bottom: dotted 1px #FF1010;
+}
+/* Sub Header */
+.sub-header {
+	background-color: #f0f0ff;
+	border-bottom: 1px #d0d0d0 solid;
+	margin: -4px -5px 2px -5px;
+	padding: 2px;
+	width: auto;
+	font-family: Tahoma, Verdana, Arial, sans-serif;
+	font-size: 0.9em;
+	font-weight: bold;
+	color: #808080;
+	text-align: center;
+}
+.sub-header-syntax {
+	color: #900;
+}
+/* Version Footer */
+.version-footer {
+	background-color: #f0f0ff;
+	border-top: 1px #d0d0d0 solid;
+	width: auto;
+	margin: 0px -5px -4px -5px;
+	padding: 2px;
+	padding-left: 4px;
+	font-family: Tahoma, Verdana, Arial, sans-serif;
+	font-size: 0.9em;
+	font-weight: bold;
+	color: #000;
+}
+/* The Content */
+.syntax-content {
+	padding: 0;
+}
+/* List settings */
+.syntax-list {
+	margin-top: 3px;
+	margin-right: 0;
+	margin-bottom: 3px;
+}
+li.syntax-row { 
+	margin-left: 12px;
+	white-space: normal; 
+	border-top: 1px #E0E0E0 solid;
+	color: #BBB;
+	wrap-option: emergency;
+}
+.syntax-row-text {
+	color: #444;
+}
+div.syntax li.syntax-row-highlight {
+	color: #FF1010;
+	border-color: #D8D8D8;
+}
+div.syntax li.syntax-row-highlight .syntax-row-text, span.syntax-row-highlight {
+	color: #FF1010;
+}
+li.syntax-row-first {
+	border-top: none;
+}
+
+/* Mini Table */
+.minitable {  
+	color: #444;  
+	display: block;  
+	margin: 5px 20px;  
+	border: solid 1px #D0D0D0;  
+	background-color: #FFF;  
+	font-size: 12px;  
+}  
+.minitable-header {  
+	background: #fff url({T_THEME_PATH}/images/bg_header.gif) top left repeat-x;
+	margin: 0;  
+	margin-bottom: 5px;  
+	padding-left: 5px;  
+	padding-top: 7px;
+	padding-right: 5px;
+	border-bottom: solid 1px #D0D0D0;  
+	font-size: 12px;  
+	line-height: 1.2em;  
+	font-family: Verdana, Arial, Helvetica, sans-serif;  
+	font-weight: bold;
+	color: #EDEFF4;
+	height: 21px;
+
+}  
+.minitable-hideme {  
+	font-size: 10px;  
+	line-height: 1.2em;
+	font-family: Verdana, Arial, Helvetica, sans-serif;  
+	font-weight: bold;
+	color: #EEE;
+	float: right;
+}
+.minitable-hideme a, .minitable-hideme a:visited {
+	color: #eee;
+	text-decoration: none;
+}
+.minitable-hideme a:hover {
+	color: #fff;
+	text-decoration: none;
+}
+.minitable-contents {  
+	padding-left: 5px;  
+	padding-right: 5px;  
+	padding-bottom: 5px;  
+	line-height: 1.5;
+	text-align: left;
+}  
+
+/* Hide content */
+.hide-contents,
+.hide-contents .quote-message {
+	color: #757575;
+	background-color: #F2F2F2;
+	border: 2px dotted #DEDEDE;
+	text-align: left;
+	padding: 5px;
+}

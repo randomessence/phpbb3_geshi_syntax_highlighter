@@ -1,0 +1,34 @@
+# To use the language as a BBCode tag
+#
+#		NOTE: It will add a little load to the class creation as the GeSHi dir where the language
+#			  files are will be scanned and added to the BBCode array every time the class is
+#			  initialised, this means every page
+#
+# 
+#-----[ OPEN ]-------------------------------------------------------
+#
+
+includes/hooks/hook_syntax_highlighting.php
+
+# 
+#-----[ FIND ]-------------------------------------------------------
+#
+
+	var $auto_add_tags = false;
+
+# 
+#-----[ IN-LINE FIND ]----------------------------------------------- 
+# 
+
+false
+
+# 
+#-----[ IN-LINE REPLACE WITH ]--------------------------------------- 
+# 
+
+true
+
+# 
+#-----[ SAVE/CLOSE ALL FILES ]--------------------------------------- 
+# 
+# EoM

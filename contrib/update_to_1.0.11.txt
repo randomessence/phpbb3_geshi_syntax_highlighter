@@ -1,0 +1,36 @@
+#
+# Update to 1.0.11
+# 
+#-----[ COPY ]-------------------------------------------------------
+# 
+
+root/includes/hooks/hook_syntax_highlighter.php				to	includes/hooks/hook_syntax_highlighter.php
+
+root/language/en/mods/useless_xs_bbcode.php						to	language/en/mods/useless_xs_bbcode.php
+
+root/styles/prosilver/theme/ul_syntaxhighlighter.css	to	styles/prosilver/theme/ul_syntaxhighlighter.css
+
+root/bbc_download.php																	to	bbc_download.php
+
+# 
+#-----[ OPEN ]-------------------------------------------------------
+#
+
+language/en/common.php
+
+# 
+#-----[ FIND ]-------------------------------------------------------
+#
+
+	'XS_SH_TAG_SYNTAX'	=> '<b>Syntax Highlighting</b>: [syntax="php"] code in here [/syntax] or [syntax syntax="php" filename="file.php" start="10" highlight="10-15,20,22,24"] code in here [/syntax]',
+
+# 
+#-----[ REPLACE WITH ]----------------------------------------------- 
+#
+
+	'XS_SH_TAG_SYNTAX'	=> '<b>Syntax Highlighting</b>: [syntax="php"] code in here [/syntax] or [syntax lang="php" filename="file.php" start="10"] code in here [/syntax]',
+
+# 
+#-----[ SAVE/CLOSE ALL FILES ]--------------------------------------- 
+# 
+# EoM
