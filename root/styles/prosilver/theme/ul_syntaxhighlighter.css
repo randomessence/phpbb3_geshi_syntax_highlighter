@@ -8,22 +8,26 @@
 	display: block;
 	margin: 0px;
 	width: auto;
-	border: solid 1px #D0D0D0;
-	background-color: #FFF;
+	border: solid 2px #D0D0D0;
+	background-color: #FFFFFF;
 	font-size: 1.0em;
 	font-family: Courier, 'Courier New', sans-serif;
 	line-height: 1.2em;
+	
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;	
 }
 /* Main Header */
 .content .syntax-header {
 	margin: 0;
 	padding: 4px 0px 4px 4px;
 	border-bottom: solid 1px #ccc;
-	font-size: 0.7em;
+	font-size: 0.8em;
 	line-height: 1.2em;
 	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
 	font-weight: normal;
-	color: #000;
+	color: #000000;
 	text-transform: uppercase;
 }
 .syntax-header a:link,
@@ -31,7 +35,6 @@
 {
 	color: #666;
 	text-decoration: none;
-	border-bottom: dotted 1px #666;
 }
 .syntax-header a:hover,
 .syntax-header a:active
@@ -43,18 +46,20 @@
 /* Sub Header */
 .sub-header {
 	background-color: #f0f0ff;
-	border-bottom: 1px #d0d0d0 solid;
-	margin: -4px -5px 2px -5px;
-	padding: 2px;
+	border-top: 1px #d0d0d0 solid;
+	border-bottom: 2px #d0d0d0 solid;
+	margin: 0px 0px 0px 0px;
+	padding: 0px;
 	width: auto;
 	font-family: Tahoma, Verdana, Arial, sans-serif;
 	font-size: 0.9em;
 	font-weight: bold;
 	color: #808080;
 	text-align: center;
+	
 }
 .sub-header-syntax {
-	color: #900;
+	color: #EF7A06;
 }
 /* Version Footer */
 .version-footer {
