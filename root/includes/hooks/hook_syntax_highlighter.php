@@ -72,7 +72,7 @@ class SyntaxHighlighter
 	var $data			= array();
 	var $params			= array();
 	var $geshi_syntax	= array();
-	var	$str_remove		= array('class="postlink"', 'href="', 'rel="nofollow"', 'mailto:', 'onclick="this.target=\'_blank\';"', '"', ' ');
+	var	$str_remove		= array('class="postlink"','href="','rel="nofollow"','mailto:','onclick="this.target=\'_blank\';"','"','',' ');
 
 
 	// Counters
@@ -530,7 +530,7 @@ class SyntaxHighlighter
 				$download_text = ' [ <a href="bbc_download.' . $phpEx . '?p=' . $can_download;
 				if($this->code_counter)
 				{
-					$download_text .= '&item=' . $this->code_counter;
+					$download_text .= '&amp;item=' . $this->code_counter;
 				}
 				if( $this->pm )
 				{

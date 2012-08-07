@@ -6,7 +6,7 @@
 	<header>
 		<meta name="generator" content="MODX file generated with PP MODX Creator by tumba25 (online version)"/>
 		<license><![CDATA[http://opensource.org/licenses/gpl-license.php GNU General Public License v2]]></license>
-		<title lang="en"><![CDATA[A Geshi Syntax Highlighter]]></title>
+		<title lang="en"><![CDATA[A Geshi Syntax Highlighter 1.0.15.1.45c]]></title>
 		<description lang="en"><![CDATA[Adds a BBCode 'syntax' which allows you to post programs/scripts in up to 202 languages and have the post Syntax Highlighted using GeSHi.]]></description>
 		<author-notes lang="en"><![CDATA[The added BBCode will not be shown on the posting page as this mod is hooked into phpBB (and as such this mod processes the message text AFTER phpBB has parsed all the BBCodes it knows how to deal with), however, you can alter the 'Custom BBCodes Page' mod by stokerpiller to show how to use the syntax tag. Check the 'contrib/boardbbcodes_changes.txt' file for details on the changes.
 		
@@ -31,7 +31,7 @@
 				<username><![CDATA[Randomessence]]></username>
 			</author>
 		</author-group>
-		<mod-version>1.0.15.1.45b</mod-version>
+		<mod-version>1.0.15.1.45c</mod-version>
 		<installation>
 			<level>easy</level>
 			<time>600</time>
@@ -153,6 +153,13 @@
 				<changelog lang="en">
 					<change><![CDATA[Bug fix release]]></change>
 					<change><![CDATA[updated GeSHi to version 1.0.8.10]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2012-08-06</date>
+				<rev-version>1.15.1.45c</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[edited the &item to be &amp;item when the code for downloading the snippet is made to be 100% xhntl valid]]></change>
 				</changelog>
 			</entry>
 			<entry>
